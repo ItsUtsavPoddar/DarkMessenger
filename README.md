@@ -1,4 +1,6 @@
-## (Still in development of basic feature ETA - 11th April 2023)
+# (Still in development of basic features, ETC (Estimated Time to Complete) - 11th April 2023)
+
+
 # DarkMessenger 
 
 Real-time Chat Application for users to communicate with a focused feature on anonymous chatting with no auth and storing data (chats and users' details).
