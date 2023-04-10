@@ -21,18 +21,18 @@ const Homepage = () => {
         d="flex"
         justifyContent="center"
         p="3"
-        bg={"gray.400"}
+        bg={"#43434"}
         w="100%"
         m="40px 0 15px 0"
         borderRadius="2rem"
-        borderWidth="1px"
       >
         <Center>
           <Text
             justifyContent="center"
             fontSize={"4xl"}
             fontFamily={"Poppins"}
-            color="black"
+            opacity="1.0"
+            color="white"
           >
             Dark Messenger{" "}
           </Text>
@@ -42,25 +42,24 @@ const Homepage = () => {
         d="flex"
         justifyContent="center"
         p="4"
-        bg={"gray.400"}
+        bg={"rgba(0, 0, 0, 0.8)"}
         w="100%"
         m="40px 0 15px 0"
         borderRadius="2rem"
-        borderWidth="1px"
       >
         <Tabs variant="soft-rounded">
           <TabList mb="1em">
             <Tab
               width={"50%"}
-              color={"black"}
-              _selected={{ color: "white", bg: "blue.500" }}
+              color={"white"}
+              _selected={{ color: "white", bg: "blue.700" }}
             >
               Login
             </Tab>
             <Tab
               width={"50%"}
-              color={"black"}
-              _selected={{ color: "white", bg: "blue.500" }}
+              color={"white"}
+              _selected={{ color: "white", bg: "blue.700" }}
             >
               Sign Up
             </Tab>
