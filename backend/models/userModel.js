@@ -7,7 +7,6 @@ const userModel = mongoose.Schema(
     password: { type: String, required: true },
     pfp: {
       type: String,
-      required: true,
       default:
         "https://nextluxury.com/wp-content/uploads/funny-profile-pictures-4.jpg",
     },

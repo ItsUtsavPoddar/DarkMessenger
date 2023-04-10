@@ -18,10 +18,11 @@ const Login = () => {
 
   const SubmitHandler = () => {};
   return (
-    <VStack spacing="5px" color={"black"}>
+    <VStack spacing="5px" color={"white"}>
       <FormControl id="email" isRequired>
         <FormLabel>Email</FormLabel>
         <Input
+          border={"0px"}
           placeholder="Enter Email"
           onChange={(e) => {
             setEmail(e.target.value);
@@ -33,11 +34,12 @@ const Login = () => {
         <FormLabel>Password</FormLabel>
         <InputGroup>
           <InputRightElement width="4.5rem">
-            <Button h="1.75rem" size="sm" onClick={handleClick}>
+            <Button h="1.75rem" size="sm" bg={"blue.700"} onClick={handleClick}>
               {show ? "Hide" : "Show"}
             </Button>
           </InputRightElement>
           <Input
+            border={"0px"}
             type={show ? "text" : "password"}
             placeholder="Enter Password"
             onChange={(e) => {
@@ -51,6 +53,7 @@ const Login = () => {
       <Button
         //colorScheme="aqua"
         width={"100%"}
+        bg={"blue.700"}
         style={{
           marginTop: 25,
         }}
