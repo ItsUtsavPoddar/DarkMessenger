@@ -23,13 +23,13 @@ const Homepage = () => {
         p="3"
         bg={"#43434"}
         w="100%"
-        m="40px 0 15px 0"
+        m="20px 0 15px 0"
         borderRadius="2rem"
       >
         <Center>
           <Text
             justifyContent="center"
-            fontSize={"4xl"}
+            fontSize={"5xl"}
             fontFamily={"Poppins"}
             opacity="1.0"
             color="white"
@@ -44,7 +44,7 @@ const Homepage = () => {
         p="4"
         bg={"rgba(0, 0, 0, 0.8)"}
         w="100%"
-        m="40px 0 15px 0"
+        m="0px 0 15px 0"
         borderRadius="2rem"
       >
         <Tabs variant="soft-rounded">

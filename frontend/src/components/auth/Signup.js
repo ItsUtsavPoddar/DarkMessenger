@@ -7,8 +7,11 @@ import {
   InputGroup,
   InputRightElement,
   VStack,
+  useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const Signup = () => {
   const [show, setshow] = useState(false);
@@ -17,10 +20,87 @@ const Signup = () => {
   const [confirmpassword, setConfirmpassword] = useState();
   const [password, setPassword] = useState();
   const [pfp, setPfp] = useState();
+  const [loading, setLoading] = useState(false);
+  const toast = useToast();
+  const history = useHistory();
+
   const handleClick = () => setshow(!show);
 
-  const postDetails = (pics) => {};
-  const SubmitHandler = () => {};
+  const postDetails = (pics) => {
+    setLoading(true);
+    if (pics === undefined) {
+      toast({
+        title: "thik se upload kar",
+        status: "warning",
+        duration: 2000,
+        isClosable: true,
+        position: "bottom",
+      });
+      return;
+    }
+  };
+
+  const SubmitHandler = async () => {
+    setLoading(true);
+    if (!name || !email || !password || !confirmpassword) {
+      toast({
+        title: "thik se upload kar, Saare bhar Saare",
+        status: "warning",
+        duration: 2000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setLoading(false);
+      return;
+    }
+
+    if (password !== confirmpassword) {
+      toast({
+        title: "same password daale re baba",
+        status: "warning",
+        duration: 2000,
+        isClosable: true,
+        position: "bottom",
+      });
+      return;
+    }
+    try {
+      const config = {
+        header: {
+          "Content-type": "application/json",
+        },
+      };
+
+      const { data } = await axios.post(
+        "/api/user",
+        { name, email, password },
+        config
+      );
+
+      toast({
+        title: "Reg success",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+        position: "bottom",
+      });
+
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      setLoading(false);
+
+      history.push("/chats");
+    } catch (error) {
+      toast({
+        title: "some erroe",
+        description: error.response.data.message,
+        status: "warning",
+        duration: 2000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setLoading(false);
+    }
+  };
   return (
     <VStack spacing="5px" color={"white"}>
       <FormControl id="first-name" isRequired>
@@ -84,6 +164,7 @@ const Signup = () => {
         </InputGroup>
       </FormControl>
 
+      {/*
       <FormControl id="pfp">
         <FormLabel>Upload your face</FormLabel>
         <Input
@@ -93,7 +174,7 @@ const Signup = () => {
           accept="image/*"
           onChange={(e) => postDetails(e.target.files[0])}
         />
-      </FormControl>
+          </FormControl> */}
 
       <Button
         //colorScheme="aqua"
@@ -103,6 +184,7 @@ const Signup = () => {
           marginTop: 25,
         }}
         onClick={SubmitHandler}
+        isLoading={loading}
       >
         Submit
       </Button>
