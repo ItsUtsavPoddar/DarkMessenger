@@ -10,7 +10,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Login = () => {
@@ -18,7 +18,7 @@ const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const handleClick = () => setshow(!show);
-  const history = useHistory();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const toast = useToast();
 
@@ -44,10 +44,11 @@ const Login = () => {
       };
 
       const { data } = await axios.post(
-        "/api/user/login",
+        "http://localhost:3001/api/user/login",
         { email, password },
         config
       );
+      console.log(data);
 
       toast({
         title: "Login success",
@@ -60,7 +61,7 @@ const Login = () => {
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
 
-      history.push("/chats");
+      navigate("/chats");
     } catch (error) {
       toast({
         title: "some erroe",

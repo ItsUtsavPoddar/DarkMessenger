@@ -13,18 +13,18 @@ import {
 
 import Login from "../components/auth/Login";
 import Signup from "../components/auth/Signup";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Homepage = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
     if (userInfo) {
-      history.push("/chats");
+      navigate("/chats");
     }
-  }, [history]);
+  }, [navigate]);
 
   return (
     <Container maxW="xl" centerContent>

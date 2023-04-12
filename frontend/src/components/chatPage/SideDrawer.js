@@ -30,7 +30,7 @@ const SideDrawer = () => {
         p="10 10 10 10"
       >
         <Button variant="ghost" _hover={{ bg: "#5A5A5A" }}>
-          <i class="fa-brands fa-searchengin"></i>
+          <i className="fa-brands fa-searchengin"></i>
           <Text
             d={{ base: "none", md: "flex" }}
             p={"8px"}
