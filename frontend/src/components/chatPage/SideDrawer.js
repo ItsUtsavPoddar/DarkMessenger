@@ -18,8 +18,8 @@ const SideDrawer = () => {
   const [searchResult, setsearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingChat, setLoadingChat] = useState();
-  const { user } = ChatState();
-  console.log(user);
+  const { user } = ChatState;
+
   return (
     <>
       <Box
@@ -47,7 +47,7 @@ const SideDrawer = () => {
 
         <Menu>
           <MenuButton as={Button} colorScheme="BlackAlpha 50">
-            <Avatar name={user.name} src={user.pfp} />
+            <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
           </MenuButton>
 
           <MenuList>
