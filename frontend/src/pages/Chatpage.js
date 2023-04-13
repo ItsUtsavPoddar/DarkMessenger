@@ -14,7 +14,7 @@ const Chatpage = () => {
         width: "100%",
       }}
     >
-      {{ user } && <SideDrawer />}
+      {user && <SideDrawer />}
       <Box
         display={"flex"}
         justifyContent="space-between"
