@@ -19,9 +19,15 @@ import {
   useDisclosure,
   Input,
   useToast,
+  List,
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
-import { ChatState } from "../../Context/ChatProvider";
+import {
+  ChatState,
+  setselectedChat,
+  chats,
+  setchats,
+} from "../../Context/ChatProvider";
 import Profile from "./Profile";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -82,7 +88,36 @@ const SideDrawer = () => {
     }
   };
 
-  const accessChat = (userId) => {};
+  const accessChat = async (userId) => {
+    try {
+      setLoadingChat(true);
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      };
+
+      const { data } = await axios.post(
+        "http://localhost:3001/api/chat",
+        { userId },
+        config
+      );
+
+      setselectedChat(data);
+      setLoadingChat(false);
+      onClose();
+    } catch (error) {
+      Toast({
+        title: "cant fetch chat",
+        description: error.message,
+        status: "warning",
+        duration: 2000,
+        isClosable: true,
+        position: "bottom",
+      });
+    }
+  };
 
   return (
     <>
@@ -146,26 +181,27 @@ const SideDrawer = () => {
           <DrawerCloseButton />
           <DrawerHeader>Search an User</DrawerHeader>
 
-          <DrawerBody display={"flex"} flexDir={"row"}>
-            <Input
-              border={"0px"}
-              placeholder="Type here..."
-              mr={"2"}
-              value={search}
-              onChange={(e) => setsearch(e.target.value)}
-            />
-            <Button
-              variant="outline"
-              colorScheme="gray"
-              _hover={{
-                color: "gray",
-              }}
-              onClick={handleSearch}
-              isLoading={loading}
-            >
-              Search
-            </Button>
-
+          <DrawerBody>
+            <Box display={"flex"} flexDir={"row"} marginBottom={"20px"}>
+              <Input
+                border={"0px"}
+                placeholder="Type here..."
+                mr={"2"}
+                value={search}
+                onChange={(e) => setsearch(e.target.value)}
+              ></Input>
+              <Button
+                variant="outline"
+                colorScheme="gray"
+                _hover={{
+                  color: "gray",
+                }}
+                onClick={handleSearch}
+                isLoading={loading}
+              >
+                Search
+              </Button>
+            </Box>
             {searchResult?.map((user) => (
               <UserList
                 key={user._id}
