@@ -1,4 +1,4 @@
-# Still in development, ETC (Estimated Time to Complete) - 12th April 2023, so kindly wait before contributing.
+# Still in development, ETC (Estimated Time to Complete) - 15th April 2023, Sat, so kindly wait before contributing.
 
 # Dark Messenger
 
