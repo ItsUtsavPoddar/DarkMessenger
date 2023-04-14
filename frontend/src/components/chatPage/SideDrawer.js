@@ -32,6 +32,7 @@ import Profile from "./Profile";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import UserList from "./UserList";
+import { URL } from "../../App";
 
 const SideDrawer = () => {
   const [search, setsearch] = useState("");
@@ -45,7 +46,7 @@ const SideDrawer = () => {
 
   const LogoutHandler = () => {
     localStorage.removeItem("userInfo");
-    navigate("/");
+    navigate(`${URL}/`);
   };
 
   const handleSearch = async () => {
@@ -69,7 +70,7 @@ const SideDrawer = () => {
       };
 
       const { data } = await axios.get(
-        `http://localhost:3001/api/user?search=${search}`,
+        `${URL}/api/user?search=${search}`,
         config
       );
 
@@ -98,13 +99,9 @@ const SideDrawer = () => {
         },
       };
 
-      const { data } = await axios.post(
-        "http://localhost:3001/api/chat",
-        { userId },
-        config
-      );
+      const { data } = await axios.post(`${URL}/api/chat`, { userId }, config);
 
-      setselectedChat(data);
+      //  setselectedChat(data);
       setLoadingChat(false);
       onClose();
     } catch (error) {

@@ -14,6 +14,7 @@ import {
 import Login from "../components/auth/Login";
 import Signup from "../components/auth/Signup";
 import { useNavigate } from "react-router-dom";
+import { URL } from "../App";
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const Homepage = () => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
     if (userInfo) {
-      navigate("/chats");
+      navigate(`${URL}/chats`);
     }
   }, [navigate]);
 

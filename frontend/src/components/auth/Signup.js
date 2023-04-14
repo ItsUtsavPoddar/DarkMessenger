@@ -12,6 +12,7 @@ import {
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { URL } from "../../App";
 
 const Signup = () => {
   const [show, setshow] = useState(false);
@@ -62,6 +63,7 @@ const Signup = () => {
         isClosable: true,
         position: "bottom",
       });
+      setLoading(false);
       return;
     }
     try {
@@ -72,7 +74,7 @@ const Signup = () => {
       };
 
       const { data } = await axios.post(
-        "http://localhost:3001/api/user",
+        `${URL}/api/user`,
         { name, email, password },
         config
       );
@@ -88,7 +90,7 @@ const Signup = () => {
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
 
-      navigate("/chats");
+      navigate(`${URL}/chats`);
     } catch (error) {
       toast({
         title: "some erroe",

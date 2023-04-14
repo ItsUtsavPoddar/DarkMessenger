@@ -12,6 +12,7 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { URL } from "../../App";
 
 const Login = () => {
   const [show, setshow] = useState(false);
@@ -44,7 +45,7 @@ const Login = () => {
       };
 
       const { data } = await axios.post(
-        "http://localhost:3001/api/user/login",
+        `${URL}/api/user/login`,
         { email, password },
         config
       );
@@ -61,7 +62,7 @@ const Login = () => {
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
 
-      navigate("/chats");
+      navigate(`${URL}/chats`);
     } catch (error) {
       toast({
         title: "some erroe",
