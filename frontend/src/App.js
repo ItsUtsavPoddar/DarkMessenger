@@ -14,8 +14,8 @@ function App() {
         <ChatProvider>
           <ChakraProvider>
             <Routes>
-              <Route exact path="/" element={<Homepage />} />
-              <Route exact path="/chats" element={<Chatpage />} />
+              <Route exact path={`${URL}/`} element={<Homepage />} />
+              <Route exact path={`${URL}/chats`} element={<Chatpage />} />
             </Routes>
           </ChakraProvider>
         </ChatProvider>
