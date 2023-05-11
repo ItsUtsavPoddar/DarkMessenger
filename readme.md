@@ -1,6 +1,6 @@
-# Still in development, ETC (Estimated Time to Complete) - 15th April 2023, Sat, so kindly wait before contributing.
-
 # Dark Messenger
+
+### Feel free to contribute though the app is still in early development phase. (College assignments)
 
 Real-time Chat Application for users to communicate with a focused feature on anonymous chatting with no auth and storing data (chats and users' details).
 
